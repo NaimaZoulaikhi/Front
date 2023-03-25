@@ -1,0 +1,47 @@
+<!--<div class="container">
+  <div class="row">
+    <div class="col col-md-6 ">
+      <app-fournisseur-create></app-fournisseur-create>
+    </div>
+    <div class="col col-md-6">
+      <app-fournisseur-list></app-fournisseur-list>
+    </div>
+  </div>
+</div>-->
+
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand">GESTION DES FOURNISSEURS & RECEPTIONS</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon">
+      </span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" [routerLink]="['/CreateFournisseur']">Create Fournisseur</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link active" [routerLink]="['/ListFournisseur']">fournisseurs list</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" [routerLink]="['/CreateReception']">Create Reception</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link active" [routerLink]="['/ListReception']">Receptions list</a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="mt-5">
+  <router-outlet></router-outlet>
+</div>

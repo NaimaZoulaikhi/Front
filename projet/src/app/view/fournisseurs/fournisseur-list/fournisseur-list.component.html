@@ -1,0 +1,80 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+<div class="container">
+
+  <div class="input-group mb-3">
+    <input type="text"  id="cne" class="form-control" placeholder="Search by CNE" [(ngModel)]="fournisseur.cne" (keyup)="onSearchKeyUp()" aria-describedby="basic-addon2">
+    <div class="input-group-append">
+      <button class="btn btn-outline-info " (click)="searchFournisseur()"  type="button"><i class="fas fa-search"></i></button>
+    </div>
+  </div>
+
+   <!-- <div *ngIf="fournisseur">
+      <h2>{{ fournisseur.cne }}</h2>
+      <p>{{ fournisseur.nomPrenom }}</p>
+      <p>{{ fournisseur.siege }}</p>
+    </div>
+  </div>-->
+
+
+  <!--<div class="row">
+     <div class="col-md-12 mx-auto">
+       <table class="table table-bordered table-hover "  *ngIf="fournisseurs.length != 0">
+         <thead>
+         <th>CNE</th>
+         <th>Nom&Prenom</th>
+         <th>Siège</th>
+         <th>Action</th>
+         </thead>
+         <tbody>
+         <tr  *ngFor="let c of fournisseurs; index as i">
+           <td>{{c.cne}}</td>
+           <td>{{c.nomPrenom}}</td>
+           <td>{{c.siege}}</td>
+           <td><span class="fa fa-trash btn btn-sm btn-danger" (click)="deleteByCne(c,i)"></span></td>
+         </tr>
+         <ng-container *ngIf="showFournisseur">
+           <tr>
+             <td>{{fournisseur.cne}}</td>
+             <td>{{fournisseur.nomPrenom}}</td>
+             <td>{{fournisseur.siege}}</td>
+           </tr>
+         </ng-container>
+
+         </tbody>
+       </table>
+   div>
+   </div>
+ </div>-->
+
+
+
+  <table>
+    <thead>
+    <tr>
+      <th>Nom</th>
+      <th>Prénom</th>
+      <th>Email</th>
+    </tr>
+    </thead>
+    <tbody>
+    <ng-container *ngIf=" fournisseur.cne=='' && fournisseurs.length > 0">
+      <tr *ngFor="let fournisseur of fournisseurs">
+        <td>{{fournisseur.cne}}</td>
+        <td>{{fournisseur.nomPrenom}}</td>
+        <td>{{fournisseur.siege}}</td>
+      </tr>
+    </ng-container>
+
+    <ng-container *ngIf="fournisseur.cne && showFournisseur">
+      <tr>
+        <td>{{fournisseur.cne}}</td>
+        <td>{{fournisseur.nomPrenom}}</td>
+        <td>{{fournisseur.siege}}</td>
+      </tr>
+    </ng-container>
+
+
+    </tbody>
+  </table>

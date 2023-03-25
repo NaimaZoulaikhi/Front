@@ -1,0 +1,35 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+<div class="container">
+
+  <div class="input-group mb-3">
+    <input type="text" class="form-control" [(ngModel)]="reception.ref"  placeholder="Search by Reference" aria-label="Search by Reference" aria-describedby="basic-addon2">
+    <div class="input-group-append">
+      <button class="btn btn-outline-info " type="button"><i class="fas fa-search"></i></button>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-md-12 mx-auto">
+      <table class="table table-bordered table-hover " *ngIf="receptions.length != 0">
+        <thead>
+        <th>Reference</th>
+        <th>Date de réception</th>
+        <th>Code d'appel d'achat</th>
+        <th>Action</th>
+        </thead>
+        <tbody>
+        <tr *ngFor="let c of receptions; index as i">
+          <td>{{c.ref}}</td>
+          <td>{{c.dateReception | date:'dd-MM-yyyy' }}</td>
+          <td>{{c.appelAchat.ref}}</td>
+
+          <td><span class="fa fa-trash btn btn-sm btn-danger" (click)="deleteByRef(c,i)"></span></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

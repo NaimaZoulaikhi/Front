@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 mx-auto">
+      <h1 class="m-4 text-danger ">Create Fournisseur</h1>
+      <div class="card " style="background-color: wheat">
+
+        <div class="card-body">
+
+          <div class="form-group">
+            <label for="cne">CNE</label>
+            <input id="cne" type="text" [(ngModel)]="fournisseur.cne " class="form-control">
+          </div>
+
+          <div class="form-group">
+            <label for="nomPrenom">Nom & Prénom</label>
+            <input id="nomPrenom" type="text" [(ngModel)]="fournisseur.nomPrenom" class="form-control">
+          </div>
+
+          <div class="form-group">
+            <label for="siege">Siège</label>
+            <input id="siege" type="text" [(ngModel)]="fournisseur.siege" class="form-control">
+          </div>
+        </div>
+
+        <div class="card-footer">
+          <button class="btn btn-danger btn-lg" (click)="save()"> Save</button>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
