@@ -10,6 +10,8 @@ import {Fournisseur} from "../../../controler/model/fournisseur.model";
   styleUrls: ['./reception-list.component.css']
 })
 export class ReceptionListComponent implements OnInit{
+
+  searchText ='';
   ngOnInit(): void {
     this.findAll();
   }

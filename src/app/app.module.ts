@@ -10,6 +10,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {RouterModule} from "@angular/router";
 import { ReceptionCreateComponent } from './view/reception/reception-create/reception-create.component';
 import { ReceptionListComponent } from './view/receptions/reception-list/reception-list.component';
+import { SearchPipe } from './search.pipe';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,9 @@ import { ReceptionListComponent } from './view/receptions/reception-list/recepti
     FournisseurCreateComponent,
     FournisseurListComponent,
     ReceptionCreateComponent,
-    ReceptionListComponent
+    ReceptionListComponent,
+    SearchPipe,
+
   ],
     imports: [
         BrowserModule,

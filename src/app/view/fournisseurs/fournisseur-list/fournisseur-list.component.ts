@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FournisseurService} from "../../../controler/service/fournisseur.service";
 import {Fournisseur} from "../../../controler/model/fournisseur.model";
 import {debounceTime, Subject} from "rxjs";
+import {Reception} from "../../../controler/model/reception.model";
 
 @Component({
   selector: 'app-fournisseur-list',
@@ -9,6 +10,7 @@ import {debounceTime, Subject} from "rxjs";
   styleUrls: ['./fournisseur-list.component.css']
 })
 export class FournisseurListComponent implements OnInit {
+
 
 
   showFournisseur: boolean;
@@ -22,33 +24,24 @@ export class FournisseurListComponent implements OnInit {
   }
 
 
-  public deleteByCne(fournisseur: Fournisseur, index: number): void {
+  public deleteByCne(fournisseur: Fournisseur,index: number): void {
     console.log('haaaa cne : ' + fournisseur.cne);
     this.fournisseurService.deleteByCne(fournisseur.cne).subscribe(
       data => {
         if (data > 0) {
           this.fournisseurs.splice(index, 1);
-
         } else {
           alert("Suppression échoué!")
         }
       }
     )
-  }
 
 
-  searchFournisseur() {
-    this.fournisseurService.findByCne(this.fournisseur.cne)
-      .subscribe(data => {
-        this.fournisseur = data;
-        this.showFournisseur = true;
-        this.fournisseurs = [];
-      });
   }
 
-  onSearchKeyUp(): void {
-    this.showFournisseur = false;
-  }
+  searchText = '';
+
+
 
 
   public findAll(): void {

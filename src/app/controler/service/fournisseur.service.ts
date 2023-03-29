@@ -14,9 +14,19 @@ export class FournisseurService {
   private _url = "http://localhost:8080/gestionBudget/v1/fournisseur/";
   constructor(private _http:HttpClient) { }
 
+
+
+  getFournisseur(id: number): Observable<Fournisseur> {
+    return this.http.get<Fournisseur>(this.url+'id/'+id);
+  }
+
+
+
   public findAll():Observable<Array<Fournisseur>>{
     return this.http.get<Array<Fournisseur>>(this.url);
   }
+
+
 
   public save(fournisseur: Fournisseur):Observable<number>{
     return this.http.post<number>(this.url , fournisseur);
