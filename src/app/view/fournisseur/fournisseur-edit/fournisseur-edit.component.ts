@@ -48,15 +48,16 @@ export class FournisseurEditComponent implements OnInit {
 
   }
 
+  
+
   public updateFournisseur(){
-    this.fournisseurService.updateFournisseur(this.fournisseur,this.id).subscribe(
-      data =>{
+    this.fournisseurService.updateFournisseur(this.fournisseur).subscribe(
+      (data) =>{
           if (data == 1) {
             alert('Fournisseur updated successfully');
             this.fournisseurService.fournisseur.cne = '';
             this.fournisseurService.fournisseur.nomPrenom = '';
             this.fournisseurService.fournisseur.siege = '';
-
           } else if(data == -1) {
             alert("update échoué!");
 

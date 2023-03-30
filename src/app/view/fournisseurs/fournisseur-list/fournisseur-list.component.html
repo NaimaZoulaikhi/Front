@@ -30,13 +30,49 @@
           <td>{{c.cne}}</td>
           <td>{{c.nomPrenom}}</td>
           <td>{{c.siege}}</td>
-          <td><i class="fa fa-trash btn btn-sm btn-danger" (click)="deleteByCne(c,i)"></i>
-            <a routerLink="/update/{{c.id}}" ><i class="fa fa-edit btn btn-sm btn-info" style="margin-left:5px"></i></a></td>
+          <td><i class="fa fa-trash btn btn-sm btn-danger" (click)="deleteByCne(c,i)"></i></td>
+          <td>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="callMagasin(c)">Modify</button>
+          </td>
         </tr>
         </tbody>
       </table>
     </div>
     </div>
+
+
+
+     <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Update Magasin</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="card-body">
+            <div class="form-group">
+              <label for="libelle">Cne</label>
+              <input disabled id="cne" type="text" class="form-control" [(ngModel)]="fournisseur.cne">
+            </div>
+            <div class="form-group">
+              <label for="libelle">fournisseur</label>
+              <input id="libelle" type="text" class="form-control" [(ngModel)]="fournisseur.nomPrenom">
+            </div>
+            <div class="form-group">
+              <label for="code">siege</label>
+              <input id="code" type="text" class="form-control" [(ngModel)]="fournisseur.siege">
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" (click)="updateFournisseur()" data-bs-dismiss="modal">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
 

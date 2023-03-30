@@ -25,8 +25,8 @@ export class FournisseurService {
 
   }
 
-  public updateFournisseur(fournisseur:Fournisseur,id:number): Observable<number> {
-    return this.http.put<number>(this.url+id,fournisseur);
+  public updateFournisseur(fournisseur:Fournisseur): Observable<number> {
+    return this.http.put<number>(this.url,fournisseur);
   }
 
 
