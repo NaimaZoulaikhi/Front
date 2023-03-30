@@ -5,7 +5,7 @@
       <div class="card " style="background-color: wheat">
 
         <div class="card-body">
-          <form [formGroup]="editFournisseur" (ngSubmit)="collection()">
+          <form [formGroup]="editFournisseur">
           <div class="form-group"  >
             <label for="cne">CNE</label>
             <input id="cne" formControlName="cne"  type="text"  [(ngModel)]="fournisseur.cne " placeholder="Entrer le CNE" class="form-control">

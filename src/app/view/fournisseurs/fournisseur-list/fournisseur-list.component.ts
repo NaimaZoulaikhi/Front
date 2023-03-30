@@ -25,6 +25,29 @@ export class FournisseurListComponent implements OnInit {
 
   }
 
+  public updateFournisseur(){
+    this.fournisseurService.updateFournisseur(this.fournisseur).subscribe(
+      (data) =>{
+          if (data == 1) {
+            alert('Fournisseur updated successfully');
+            this.fournisseurService.fournisseur.cne = '';
+            this.fournisseurService.fournisseur.nomPrenom = '';
+            this.fournisseurService.fournisseur.siege = '';
+            this.findAll();
+
+          } else if(data == -1) {
+            alert("update échoué!");
+
+
+      }
+      }
+    )
+  }
+
+  public callMagasin(c: Fournisseur): void {
+    this.fournisseur = { ...c };
+  }
+
 
   public deleteByCne(fournisseur: Fournisseur,index: number): void {
     console.log('haaaa cne : ' + fournisseur.cne);
