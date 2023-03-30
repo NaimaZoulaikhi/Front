@@ -1,40 +1,52 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Reception} from "../model/reception.model";
 import {HttpClient} from "@angular/common/http";
 import {Fournisseur} from "../model/fournisseur.model";
 import {Observable} from "rxjs";
 import {AppelAchat} from "../model/appel-achat";
+import {ReceptionProduit} from "../model/reception-produit.model";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ReceptionService {
 
+
   private _reception: Reception;
   private _receptions: Array<Reception>;
 
-  private _appelAchat: AppelAchat;
-  get appelAchat(): AppelAchat {
-    return this._appelAchat;
-  }
+  private _receptionProduit: ReceptionProduit;
 
-  set appelAchat(value: AppelAchat) {
-    this._appelAchat = value;
-  }
+  private _appelAchat: AppelAchat;
 
   private _url = "http://localhost:8080/gestionBudget/v1/reception/";
-  constructor(private _http:HttpClient) { }
 
-  public save():Observable<number>{
-    return this.http.post<number>(this.url,this.reception);
+  constructor(private _http: HttpClient) {
   }
 
-  public findAll():Observable<Array<Reception>>{
+  public addReceptionProduit(){
+
+  }
+
+  public save(): Observable<number> {
+    return this.http.post<number>(this.url, this.reception);
+  }
+
+  public findById(id: number): Observable<Reception>{
+    return  this.http.get<Reception>(this.url+'id/'+id);
+
+  }
+
+  public updateReception(reception:Reception,id:number): Observable<number> {
+    return this.http.put<number>(this.url+id,reception);
+  }
+
+  public findAll(): Observable<Array<Reception>> {
     return this.http.get<Array<Reception>>(this.url);
   }
 
   public deleteByRef(ref: string): Observable<number> {
-    return this.http.delete<number>(this.url+'ref/'+ref);
+    return this.http.delete<number>(this.url + 'ref/' + ref);
   }
 
   get url(): string {
@@ -46,7 +58,7 @@ export class ReceptionService {
   }
 
   get reception(): Reception {
-    if(this._reception == null){
+    if (this._reception == null) {
       this._reception = new Reception();
     }
     return this._reception;
@@ -57,7 +69,7 @@ export class ReceptionService {
   }
 
   get receptions(): Array<Reception> {
-    if(this._receptions == null ){
+    if (this._receptions == null) {
       this._receptions = new Array<Reception>();
     }
     return this._receptions;
@@ -65,6 +77,26 @@ export class ReceptionService {
 
   set receptions(value: Array<Reception>) {
     this._receptions = value;
+  }
+
+
+  get appelAchat(): AppelAchat {
+    return this._appelAchat;
+  }
+
+  set appelAchat(value: AppelAchat) {
+    this._appelAchat = value;
+  }
+
+  get receptionProduit(): ReceptionProduit {
+    if (this.receptionProduit == null) {
+      return this._receptionProduit = new ReceptionProduit();
+    }
+    return this._receptionProduit;
+  }
+
+  set receptionProduit(value: ReceptionProduit) {
+    this._receptionProduit = value;
   }
 
   get http(): HttpClient {

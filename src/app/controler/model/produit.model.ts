@@ -1,6 +1,6 @@
 import {CategorieProduit} from "./categorieProduit.model";
 
-export class ProduitModel {
+export class Produit {
 
   public id: number;
   public libelle: string;
