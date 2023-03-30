@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Fournisseur} from "../model/fournisseur.model";
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {Observable, Subscription} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -14,9 +14,30 @@ export class FournisseurService {
   private _url = "http://localhost:8080/gestionBudget/v1/fournisseur/";
   constructor(private _http:HttpClient) { }
 
+
+
+  getFournisseur(id: number): Observable<Fournisseur> {
+    return this.http.get<Fournisseur>(this.url+'id/'+id);
+  }
+
+  public findById(id: number): Observable<Fournisseur>{
+    return  this.http.get<Fournisseur>(this.url+'id/'+id);
+
+  }
+
+  public updateFournisseur(fournisseur:Fournisseur,id:number): Observable<number> {
+    return this.http.put<number>(this.url+id,fournisseur);
+  }
+
+
+
   public findAll():Observable<Array<Fournisseur>>{
     return this.http.get<Array<Fournisseur>>(this.url);
   }
+
+
+
+
 
   public save(fournisseur: Fournisseur):Observable<number>{
     return this.http.post<number>(this.url , fournisseur);

@@ -9,10 +9,14 @@ import {Fournisseur} from "../../../controler/model/fournisseur.model";
   templateUrl: './reception-list.component.html',
   styleUrls: ['./reception-list.component.css']
 })
-export class ReceptionListComponent implements OnInit{
+export class ReceptionListComponent implements OnInit {
+
+  searchText = '';
+
   ngOnInit(): void {
     this.findAll();
   }
+
   constructor(private receptionService: ReceptionService) {
   }
 
@@ -22,8 +26,7 @@ export class ReceptionListComponent implements OnInit{
     );
   }
 
-
-  public deleteByRef(reception: Reception,index: number): void {
+  public deleteByRef(reception: Reception, index: number): void {
     console.log('haaaa cne : ' + reception.ref);
     this.receptionService.deleteByRef(reception.ref).subscribe(
       data => {
