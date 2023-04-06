@@ -5,6 +5,7 @@ import {AppelAchat} from "../../../controler/model/appel-achat";
 import {ReceptionProduit} from "../../../controler/model/reception-produit.model";
 import {ProduitService} from "../../../controler/service/produit.service";
 import {Produit} from "../../../controler/model/produit.model";
+import {DatePipe} from "@angular/common";
 
 
 @Component({
@@ -20,7 +21,7 @@ export class ReceptionCreateComponent implements OnInit {
 
   public save(): void {
 
-    this.receptionService.save().subscribe(
+    this.receptionService.save(this.reception).subscribe(
       data => {
         if (data == -1) {
           alert('faild : reception exist!');
@@ -41,6 +42,9 @@ export class ReceptionCreateComponent implements OnInit {
   constructor(private receptionService: ReceptionService, private produitService: ProduitService) {
     this.receptionService.reception.appelAchat = new AppelAchat();
   }
+
+
+
 
   get reception(): Reception {
     return this.receptionService.reception;

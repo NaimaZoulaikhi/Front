@@ -6,7 +6,7 @@
 <div class="container">
 
   <div class="input-group mb-3">
-    <input type="text" id="cne" class="form-control" placeholder="Search by CNE" [(ngModel)]="searchText"
+    <input type="text" id="cne1" class="form-control" placeholder="Search by CNE" [(ngModel)]="searchText"
            aria-describedby="basic-addon2">
     <div class="input-group-append">
       <button class="btn btn-outline-info " type="button"><i class="fas fa-search"></i></button>
@@ -30,9 +30,8 @@
           <td>{{c.cne}}</td>
           <td>{{c.nomPrenom}}</td>
           <td>{{c.siege}}</td>
-          <td><i class="fa fa-trash btn btn-sm btn-danger" (click)="deleteByCne(c,i)"></i></td>
-          <td>
-            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="callMagasin(c)">Modify</button>
+          <td><i class="fa fa-trash btn btn-sm btn-danger" (click)="deleteByCne(c,i)"></i>
+            <i class="fa fa-edit btn btn-sm btn-info" style="margin-left:5px" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="callFournisseur(c)"></i>
           </td>
         </tr>
         </tbody>

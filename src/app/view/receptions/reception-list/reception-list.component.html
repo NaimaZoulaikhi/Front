@@ -27,10 +27,43 @@
           <td>{{c.appelAchat.ref}}</td>
 
           <td><span class="fa fa-trash btn btn-sm btn-danger" (click)="deleteByRef(c,i)"></span>
-          <a routerLink="/updateR/{{c.id}}" ><i class="fa fa-edit btn btn-sm btn-info" style="margin-left:5px"></i></a></td>
+            <i class="fa fa-edit btn btn-sm btn-info" style="margin-left:5px" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="callReception(c)"></i>
         </tr>
         </tbody>
       </table>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Update Reception</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="card-body">
+          <div class="form-group">
+            <label for="ref">Reference :</label>
+            <input disabled id="ref" type="text" class="form-control" [(ngModel)]="reception.ref">
+          </div>
+          <div class="form-group">
+            <label for="dateReception">Date de Reception :</label>
+            <input id="dateReception" type="text"  class="form-control " [(ngModel)]="reception.dateReception ">
+          </div>
+          <div class="form-group">
+            <label for="refAppelAchat">Reference d'Appel d'achat concerné :</label>
+            <input id="refAppelAchat" type="text" class="form-control" [(ngModel)]="reception.appelAchat.ref">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="updateReception()" data-bs-dismiss="modal">Save changes</button>
+      </div>
     </div>
   </div>
 </div>

@@ -24,12 +24,11 @@ export class ReceptionService {
   constructor(private _http: HttpClient) {
   }
 
-  public addReceptionProduit(){
 
-  }
 
-  public save(): Observable<number> {
-    return this.http.post<number>(this.url, this.reception);
+
+  public save(reception:Reception): Observable<number> {
+    return this.http.post<number>(this.url, reception);
   }
 
   public findById(id: number): Observable<Reception>{
@@ -37,8 +36,8 @@ export class ReceptionService {
 
   }
 
-  public updateReception(reception:Reception,id:number): Observable<number> {
-    return this.http.put<number>(this.url+id,reception);
+  public updateReception(reception:Reception): Observable<number> {
+    return this.http.put<number>(this.url+reception.id,reception);
   }
 
   public findAll(): Observable<Array<Reception>> {

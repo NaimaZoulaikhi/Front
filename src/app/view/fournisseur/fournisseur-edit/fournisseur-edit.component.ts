@@ -14,11 +14,11 @@ export class FournisseurEditComponent implements OnInit {
 
   id: any;
 
-  editFournisseur = new FormGroup({
+  /*editFournisseur = new FormGroup({
     cne: new FormControl(''),
     nomPrenom: new FormControl(''),
     siege: new FormControl(''),
-  })
+  })*/
 
   result: Fournisseur;
   ngOnInit(): void {
@@ -33,22 +33,20 @@ export class FournisseurEditComponent implements OnInit {
       this.result=data;
       console.log(this.result);
 
-      this.editFournisseur = new FormGroup({
+      /*this.editFournisseur = new FormGroup({
         cne: new FormControl(this.result.cne),
         nomPrenom: new FormControl(this.result.nomPrenom),
         siege: new FormControl(this.result.siege),
-      })
+      })*/
     }))
   }
-  public collection(){
-    console.warn(this.editFournisseur.value);
-  }
+
 
   constructor(private fournisseurService: FournisseurService, private router: ActivatedRoute) {
 
   }
 
-  
+
 
   public updateFournisseur(){
     this.fournisseurService.updateFournisseur(this.fournisseur).subscribe(

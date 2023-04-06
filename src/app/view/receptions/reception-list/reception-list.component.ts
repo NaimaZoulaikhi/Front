@@ -3,6 +3,7 @@ import {ReceptionService} from "../../../controler/service/reception.service";
 import {Reception} from "../../../controler/model/reception.model";
 import {AppelAchat} from "../../../controler/model/appel-achat";
 import {Fournisseur} from "../../../controler/model/fournisseur.model";
+import {DatePipe} from "@angular/common";
 
 @Component({
   selector: 'app-reception-list',
@@ -18,6 +19,12 @@ export class ReceptionListComponent implements OnInit {
   }
 
   constructor(private receptionService: ReceptionService) {
+  }
+
+
+
+  public callReception(c: Reception): void {
+    this.reception = { ...c };
   }
 
   public findAll(): void {
@@ -40,6 +47,27 @@ export class ReceptionListComponent implements OnInit {
     )
 
 
+  }
+
+
+
+  public updateReception(){
+    this.receptionService.updateReception(this.reception).subscribe(
+      (data) =>{
+        if (data == 1) {
+          alert('Fournisseur updated successfully');
+          this.receptionService.reception.ref = '';
+          this.receptionService.reception.dateReception = null;
+          this.receptionService.reception.appelAchat.ref = '';
+          this.findAll();
+
+        } else if(data == -1) {
+          alert("update échoué !");
+
+
+        }
+      }
+    )
   }
 
   get reception(): Reception {

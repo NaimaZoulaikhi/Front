@@ -17,13 +17,13 @@ export class ReceptionEditComponent implements OnInit {
   id: any;
 
   result: Reception;
-  dateReception: Date | FormControlState<any> | null=null ;
 
-  editReception= new FormGroup({
+
+  /*editReception= new FormGroup({
     ref: new FormControl<string | null>(''),
     dateReception: new FormControl<Date | null >(this.dateReception),
     refAppelAchat: new FormControl<string | null>('')
-  });
+  });*/
 
   ngOnInit(): void {
     this.router.paramMap.subscribe(params => {
@@ -35,24 +35,22 @@ export class ReceptionEditComponent implements OnInit {
       this.result=data;
       console.log(this.result);
 
-       this.editReception= new FormGroup({
+       /*this.editReception= new FormGroup({
         ref: new FormControl(this.result.ref),
         dateReception: new FormControl(this.result.dateReception),
         refAppelAchat: new FormControl(this.result.appelAchat.ref),
-      })
+      })*/
     }))
 
   }
 
-  public collection(){
-    console.warn(this.editReception.value);
-  }
+
 
   constructor(private receptionService: ReceptionService, private router: ActivatedRoute) {
   }
 
   public updateReception(){
-    this.receptionService.updateReception(this.reception,this.id).subscribe(
+    this.receptionService.updateReception(this.reception).subscribe(
       data =>{
         if (data == 1) {
           alert('Reception updated successfully');

@@ -25,6 +25,7 @@ export class FournisseurListComponent implements OnInit {
 
   }
 
+
   public updateFournisseur(){
     this.fournisseurService.updateFournisseur(this.fournisseur).subscribe(
       (data) =>{
@@ -44,7 +45,7 @@ export class FournisseurListComponent implements OnInit {
     )
   }
 
-  public callMagasin(c: Fournisseur): void {
+  public callFournisseur(c: Fournisseur): void {
     this.fournisseur = { ...c };
   }
 
@@ -75,10 +76,7 @@ export class FournisseurListComponent implements OnInit {
     );
   }
 
-  /*public findByCne(): void {
-    this.fournisseurService.findByCne(this.fournisseur.cne).subscribe(
-    )
-  }*/
+
 
   get fournisseur(): Fournisseur {
     return this.fournisseurService.fournisseur;
